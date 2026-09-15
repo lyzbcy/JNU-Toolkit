@@ -24,7 +24,7 @@
   .quick button.warn { border-color: #d9dce3; color: #888; }
   .twrap { background: #fff; border-radius: 12px; margin: 0 12px; padding: 10px 8px; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
   table { width: 100%; border-collapse: collapse; table-layout: fixed; }
-  thead th { position: sticky; top: 0; z-index: 9; background: #fff; box-shadow: 0 2px 0 #d9dce3, 0 -1px 0 #d9dce3; padding: 8px 2px; }
+  thead th { position: sticky; top: var(--hdrH, 110px); z-index: 9; background: #fff; box-shadow: 0 2px 0 #d9dce3, 0 -1px 0 #d9dce3; padding: 8px 2px; }
   th { font-size: 11px; color: #666; padding: 4px 2px 8px; }
   th:first-child, td:first-child { width: 58px; }
   th:first-child { text-align: left; padding-left: 4px; }
@@ -104,7 +104,7 @@ let me = "";
 
 /* ===== 强制刷新组件（版本自动核对 + 防循环 + 更新日志） =====
    改版时: 同步更新 PAGE_VERSION 和 version.json 的 version/changelog */
-const PAGE_VERSION = 5;
+const PAGE_VERSION = 6;
 function checkVersion() {
   fetch("version.json?t=" + Date.now())
     .then(r => r.json())
@@ -131,7 +131,13 @@ function checkVersion() {
 checkVersion();
 
 ROSTER.forEach(n => { grades[n] = [0, 0, 0, 0]; const o = document.createElement("option"); o.value = n; o.textContent = n; document.getElementById("self").appendChild(o); });
+fitSticky();
 
+function fitSticky() {
+  const h = document.querySelector("header").offsetHeight;
+  document.documentElement.style.setProperty("--hdrH", h + 2 + "px");
+}
+window.addEventListener("resize", fitSticky);
 function hardRefresh() {
   const p = new URLSearchParams(location.search);
   p.set("v", Date.now());
