@@ -104,12 +104,13 @@ def stage(data, workdir, xlsx, evidence_dir):
 
 
 def make_zip(folder: Path) -> Path:
-    zip_path = folder.with_suffix(".zip") if folder.suffix else folder.parent / (folder.name + ".zip")
+    # eform 收集表要求上传文件名为【学号】【姓名】综测材料.zip
+    zip_name = folder.name + "综测材料.zip"
+    zip_path = folder.parent / zip_name
     if zip_path.exists():
         zip_path.unlink()
-    shutil.make_archive(str(folder.parent / folder.name), "zip", folder.parent, folder.name)
-    # make_archive 会生成 folder.name + .zip
-    zp = folder.parent / (folder.name + ".zip")
+    shutil.make_archive(str(folder.parent / (folder.name + "综测材料")), "zip", folder.parent, folder.name)
+    zp = folder.parent / zip_name
     print(f"压缩包 → {zp} ({zp.stat().st_size} bytes)")
     return zp
 
@@ -122,7 +123,7 @@ def submit(zip_path: Path, cfg):
         print("  请上传压缩包并按表单要求填写。")
         _open(cfg["qq_url"])
     elif mode == "eform" and cfg.get("eform_url"):
-        print("  ★ 请先连接校园网, 否则页面长时间白屏。")
+        print("  实测: 公网可直连打开; 需登录e江南(本人扫码一次, 当次会话保持)。")
         print(f"  打开江大智能填报: {cfg.get('eform_url')}")
         _open(cfg["eform_url"])
     elif mode == "folder" and cfg.get("folder"):
