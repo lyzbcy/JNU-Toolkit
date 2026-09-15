@@ -6,132 +6,135 @@
 <title>人工智能2304 民主测评</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #f0f2f5; color: #333; padding-bottom: 90px; }
-  header { background: linear-gradient(135deg, #4f6ef2, #6a5cff); color: #fff; padding: 18px 16px 14px; position: sticky; top: 0; z-index: 10; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #f0f2f5; color: #333; padding-bottom: 92px; }
+  header { background: linear-gradient(135deg, #4f6ef2, #6a5cff); color: #fff; padding: 16px 16px 13px; position: sticky; top: 0; z-index: 10; }
   header h1 { font-size: 18px; }
-  header p { font-size: 12px; opacity: .9; margin-top: 4px; line-height: 1.5; }
+  header p { font-size: 12px; opacity: .92; margin-top: 4px; line-height: 1.5; }
   .card { background: #fff; border-radius: 12px; margin: 12px; padding: 14px; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
-  .card h2 { font-size: 14px; margin-bottom: 10px; color: #222; }
+  .card h2 { font-size: 14px; margin-bottom: 10px; }
   select { width: 100%; padding: 12px; font-size: 16px; border: 1.5px solid #d9dce3; border-radius: 8px; background: #fff; appearance: none; }
   .tip { font-size: 12px; color: #888; margin-top: 8px; line-height: 1.6; }
-  table { width: 100%; border-collapse: collapse; table-layout: fixed; }
-  th { font-size: 11px; color: #666; padding: 6px 2px; border-bottom: 1px solid #eee; }
-  th:first-child, td:first-child { width: 64px; }
-  td:first-child { font-size: 13px; font-weight: 600; padding: 4px 2px; border-bottom: 1px solid #f5f5f5; }
-  .dim { font-size: 10px; display: block; color: #999; font-weight: 400; }
-  td.c { border-bottom: 1px solid #f5f5f5; padding: 3px 1px; text-align: center; }
-  button.g { width: 100%; height: 40px; border: 1.5px solid #e2e6ee; background: #fff; border-radius: 8px; font-size: 16px; color: #bbb; transition: all .12s; }
-  button.g.on-1 { background: #e8f7ee; border-color: #34a853; color: #1e8e3e; font-weight: 700; }
-  button.g.on-2 { background: #e8f0fe; border-color: #4285f4; color: #1a73e8; font-weight: 700; }
-  button.g.on-3 { background: #fef3e0; border-color: #f9a825; color: #e37400; font-weight: 700; }
-  button.g.on-4 { background: #fde8e8; border-color: #ea4335; color: #d93025; font-weight: 700; }
-  tr.self td { opacity: .35; }
-  tr.self td:first-child { color: #999; }
-  tr.self button { pointer-events: none; }
-  .actions { display: flex; gap: 8px; margin-top: 10px; }
-  .actions button { flex: 1; padding: 10px 0; border-radius: 8px; border: 1px solid #d9dce3; background: #fff; font-size: 13px; color: #555; }
-  .bar { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); box-shadow: 0 -2px 10px rgba(0,0,0,.08); display: flex; gap: 10px; }
-  .bar button { flex: 1; padding: 14px 0; border: none; border-radius: 10px; font-size: 16px; font-weight: 700; }
-  #submitBtn { background: linear-gradient(135deg, #4f6ef2, #6a5cff); color: #fff; }
-  #submitBtn:disabled { background: #c3c7d1; }
-  #copyBtn { background: #fff; border: 1.5px solid #4f6ef2; color: #4f6ef2; display: none; }
-  .done { text-align: center; padding: 30px 10px; }
-  .done b { font-size: 40px; }
-  .msg { font-size: 13px; padding: 10px; border-radius: 8px; margin-top: 10px; display: none; line-height: 1.6; }
+  #people { margin: 12px; }
+  .pcard { background: #fff; border-radius: 12px; margin-bottom: 10px; padding: 10px 12px; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+  .pcard .pname { font-size: 15px; font-weight: 700; padding: 2px 0 8px; display: flex; justify-content: space-between; align-items: center; }
+  .pname .badge { font-size: 11px; font-weight: 400; color: #999; }
+  .drow { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-top: 1px solid #f4f5f7; }
+  .drow .dl { width: 52px; font-size: 12px; color: #666; flex: none; }
+  .seg { flex: 1; display: flex; gap: 6px; }
+  .seg button { flex: 1; height: 34px; border: 1.5px solid #e2e6ee; background: #fff; border-radius: 8px; font-size: 14px; color: #999; }
+  .seg button.s1.sel { background: #34a853; border-color: #34a853; color: #fff; font-weight: 700; }
+  .seg button.s2.sel { background: #4285f4; border-color: #4285f4; color: #fff; font-weight: 700; }
+  .seg button.s3.sel { background: #f9a825; border-color: #f9a825; color: #fff; font-weight: 700; }
+  .seg button.s4.sel { background: #ea4335; border-color: #ea4335; color: #fff; font-weight: 700; }
+  .pcard.self { opacity: .45; }
+  .pcard.self .seg button { pointer-events: none; }
+  .quick { display: flex; gap: 8px; margin: 0 12px 10px; }
+  .quick button { flex: 1; padding: 11px 0; border-radius: 10px; border: 1.5px solid #4f6ef2; color: #4f6ef2; background: #fff; font-size: 14px; font-weight: 600; }
+  .quick button.warn { border-color: #d9dce3; color: #888; }
+  .bar { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); box-shadow: 0 -2px 10px rgba(0,0,0,.08); display: flex; gap: 10px; align-items: center; }
+  .bar .prog { font-size: 11px; color: #888; width: 52px; text-align: center; flex: none; }
+  .bar button.main { flex: 1; padding: 14px 0; border: none; border-radius: 10px; font-size: 16px; font-weight: 700; background: linear-gradient(135deg, #4f6ef2, #6a5cff); color: #fff; }
+  .bar button.main:disabled { background: #c3c7d1; }
+  .bar button.copy { padding: 14px 10px; border: 1.5px solid #4f6ef2; color: #4f6ef2; border-radius: 10px; background: #fff; font-size: 13px; display: none; flex: none; }
+  .done { text-align: center; padding: 34px 10px; }
+  .done b { font-size: 44px; }
+  .msg { font-size: 13px; padding: 10px; border-radius: 8px; margin: 10px 12px; display: none; line-height: 1.6; }
   .msg.err { background: #fde8e8; color: #d93025; display: block; }
   .msg.ok { background: #e8f7ee; color: #1e8e3e; display: block; }
-  .progress { font-size: 12px; color: #888; margin-left: 8px; }
 </style>
 </head>
 <body>
 <header>
   <h1>人工智能2304 民主测评（综测 2025-2026）</h1>
-  <p>优10 / 良8 / 中6 / 差2，四项各点一次。不用给自己打分（选完名字自己那行自动锁定）。每人提交一次，截止 9/16（周三）21:00。</p>
+  <p>优10 / 良8 / 中6 / 差2。建议打法：先把你觉得不是「良」的同学点好，再点「未填的全设为良」一键补齐。每人提交一次，截止 9/16（周三）21:00。</p>
 </header>
 
 <div class="card">
-  <h2>① 你是哪位？<span class="progress" id="prog"></span></h2>
+  <h2>① 你是哪位？</h2>
   <select id="self" onchange="pickSelf()">
     <option value="">— 点这里选择你的姓名 —</option>
   </select>
-  <div class="tip" id="tip" style="display:none">点格子循环：<b style="color:#1e8e3e">优</b> → <b style="color:#1a73e8">良</b> → <b style="color:#e37400">中</b> → <b style="color:#d93025">差</b>。拿不准就先「全部设为良」再单独调整。</div>
 </div>
 
-<div class="card" id="gridCard" style="display:none">
-  <h2>② 逐个打分</h2>
-  <table>
-    <thead><tr>
-      <th>同学</th>
-      <th>思想政治</th><th>品德修养</th><th>学习态度</th><th>身心发展</th>
-    </tr></thead>
-    <tbody id="tbody"></tbody>
-  </table>
-  <div class="actions">
-    <button onclick="fillAll(2)">全部设为良</button>
-    <button onclick="clearAll()">清空重填</button>
+<div id="tools" style="display:none">
+  <div class="quick">
+    <button onclick="fillRest(2)">未填的全设为良</button>
+    <button onclick="fillAll(2)" style="display:none">全部设为良(覆盖)</button>
+    <button class="warn" onclick="clearAll()">清空</button>
   </div>
-  <div class="msg" id="msg"></div>
 </div>
+<div id="people"></div>
+<div class="msg" id="msg"></div>
 
 <div class="bar">
-  <button id="copyBtn" onclick="copyCode()">复制提交码</button>
-  <button id="submitBtn" onclick="submit()">提交</button>
+  <span class="prog" id="prog"></span>
+  <button class="copy" id="copyBtn" onclick="copyCode()">复制提交码</button>
+  <button class="main" id="submitBtn" onclick="submit()">提交</button>
 </div>
 
 <script>
 const ROSTER = ["郑晗湘","甘思源","马承芳","俞思瑶","郭馨怡","李慧茹","张佳怡","徐昕喆","林俊凌","雷震","邢宇","梁文博","蒋宇恒","杭东泽","曾子翔","刘知润","王铖","余恩泽","邹炜琪","孟浩明","许麟杰","孙以恒","李俊洋","王嵩羽","张步云","李子康","王承厚","韩烨磊","卢子良","魏征征","赵星","赵燕玲"];
-const DIMS = ["思想政治","品德修养","学习态度","身心发展"];
-const GLABEL = { 1: "优", 2: "良", 3: "中", 4: "差" };
+const DIMS = ["思想政治", "品德修养", "学习态度", "身心发展"];
 const WEBHOOK = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=72bbb44c-0db0-4e45-a213-876e35630727";
 const IS_TEST = new URLSearchParams(location.search).has("test");
-const selfSel = document.getElementById("self");
 const grades = {};
 let me = "";
 
-ROSTER.forEach(n => { grades[n] = [0, 0, 0, 0]; const o = document.createElement("option"); o.value = n; o.textContent = n; selfSel.appendChild(o); });
+ROSTER.forEach(n => { grades[n] = [0, 0, 0, 0]; const o = document.createElement("option"); o.value = n; o.textContent = n; selfSel().appendChild(o); });
+function selfSel() { return document.getElementById("self"); }
 
 function pickSelf() {
-  me = selfSel.value;
-  document.getElementById("tip").style.display = me ? "block" : "none";
-  document.getElementById("gridCard").style.display = me ? "block" : "none";
-  const tb = document.getElementById("tbody");
-  tb.innerHTML = "";
+  me = selfSel().value;
+  document.getElementById("tools").style.display = me ? "block" : "none";
+  const wrap = document.getElementById("people");
+  wrap.innerHTML = "";
   ROSTER.forEach(name => {
-    const tr = document.createElement("tr");
-    if (name === me) tr.className = "self";
-    let html = `<td>${name}${name === me ? '<span class="dim">（你）</span>' : ""}</td>`;
-    for (let d = 0; d < 4; d++) html += `<td class="c"><button class="g" data-n="${name}" data-d="${d}" onclick="cycle(this)">-</button></td>`;
-    tr.innerHTML = html;
-    tb.appendChild(tr);
+    const card = document.createElement("div");
+    card.className = "pcard" + (name === me ? " self" : "");
+    let html = `<div class="pname"><span>${name}</span><span class="badge">${name === me ? "你自己 · 不用打分" : ""}</span></div>`;
+    DIMS.forEach((d, di) => {
+      html += `<div class="drow"><span class="dl">${d.slice(2)}</span><span class="seg">`;
+      [1, 2, 3, 4].forEach(v => {
+        html += `<button class="s${v}" data-n="${name}" data-d="${di}" data-v="${v}" onclick="pick(this)">${"优良中差"[v - 1]}</button>`;
+      });
+      html += `</span></div>`;
+    });
+    card.innerHTML = html;
+    wrap.appendChild(card);
   });
   if (localStorage.getItem("mzc_done_" + me)) showDone(true);
 }
 
-function cycle(btn) {
-  const n = btn.dataset.n, d = +btn.dataset.d;
-  const v = (grades[n][d] % 4) + 1;
-  grades[n][d] = v;
-  paint(btn, v);
+function pick(btn) {
+  const n = btn.dataset.n, d = +btn.dataset.d, v = +btn.dataset.v;
+  const off = grades[n][d] === v;
+  grades[n][d] = off ? 0 : v;
+  btn.parentElement.querySelectorAll("button").forEach(b => b.classList.remove("sel"));
+  if (!off) btn.classList.add("sel");
   progress();
 }
-function paint(btn, v) {
-  btn.className = "g" + (v ? " on-" + v : "");
-  btn.textContent = v ? GLABEL[v] : "-";
+function setCell(n, d, v) {
+  grades[n][d] = v;
+  const btn = document.querySelector(`button[data-n="${n}"][data-d="${d}"][data-v="${v}"]`);
+  if (btn) { btn.parentElement.querySelectorAll("button").forEach(b => b.classList.remove("sel")); btn.classList.add("sel"); }
+}
+function fillRest(v) {
+  ROSTER.forEach(n => { if (n !== me) for (let d = 0; d < 4; d++) if (!grades[n][d]) setCell(n, d, v); });
+  progress();
 }
 function fillAll(v) {
-  ROSTER.forEach(n => { if (n !== me) grades[n] = [v, v, v, v]; });
-  document.querySelectorAll("button.g").forEach(b => { if (b.dataset.n !== me) paint(b, v); });
+  ROSTER.forEach(n => { if (n !== me) for (let d = 0; d < 4; d++) setCell(n, d, v); });
   progress();
 }
 function clearAll() {
-  ROSTER.forEach(n => grades[n] = [0, 0, 0, 0]);
-  document.querySelectorAll("button.g").forEach(b => paint(b, 0));
+  ROSTER.forEach(n => { grades[n] = [0, 0, 0, 0]; });
+  document.querySelectorAll(".seg button.sel").forEach(b => b.classList.remove("sel"));
   progress();
 }
 function progress() {
   let filled = 0, total = (ROSTER.length - 1) * 4;
   ROSTER.forEach(n => { if (n !== me) grades[n].forEach(v => { if (v) filled++; }); });
-  document.getElementById("prog").textContent = me ? `${filled}/${total} 格` : "";
+  document.getElementById("prog").innerHTML = me ? `${filled}<br>/ ${total}` : "";
 }
 function buildCode() {
   const rows = DIMS.map((_, d) => ROSTER.map(n => (n === me ? 0 : grades[n][d])).join("")).join("|");
@@ -143,26 +146,24 @@ function showMsg(text, ok) {
   m.textContent = text;
 }
 function showDone(already) {
-  document.getElementById("gridCard").innerHTML = `<div class="done"><b>✅</b><p style="margin-top:10px;font-size:15px">${already ? "你之前已经提交过了" : "提交成功"}！辛苦了～</p><p class="tip">如需修改请联系班长重新提交</p></div>`;
+  document.getElementById("people").innerHTML = `<div class="pcard done"><b>✅</b><p style="margin-top:10px;font-size:15px">${already ? "你之前已经提交过了" : "提交成功"}！辛苦了～</p><p class="tip">如需修改请联系班长</p></div>`;
+  document.getElementById("tools").style.display = "none";
   const btn = document.getElementById("submitBtn");
   btn.disabled = true; btn.textContent = "已提交";
 }
 function submit() {
   if (!me) return showMsg("请先选择你的姓名", false);
-  const missing = [];
-  ROSTER.forEach(n => { if (n !== me) grades[n].forEach((v, d) => { if (!v) missing.push(n + DIMS[d]); }); });
-  if (missing.length) {
-    const names = [...new Set(missing.map(m => m.replace(/(思想政治|品德修养|学习态度|身心发展)/, "")))];
-    return showMsg(`还有 ${missing.length} 格没填（${names.slice(0, 5).join("、")}${names.length > 5 ? " 等" : ""}）。偷懒的话点「全部设为良」再微调即可。`, false);
+  const missNames = ROSTER.filter(n => n !== me && grades[n].some(v => !v));
+  if (missNames.length) {
+    return showMsg(`还有 ${missNames.length} 位同学没打完（${missNames.slice(0, 5).join("、")}${missNames.length > 5 ? " 等" : ""}）。点「未填的全设为良」一键补齐即可。`, false);
   }
-  const code = buildCode();
   const btn = document.getElementById("submitBtn");
   btn.disabled = true; btn.textContent = "提交中…";
   fetch(WEBHOOK, {
     method: "POST",
     mode: "no-cors",
     headers: { "Content-Type": "text/plain;charset=utf-8" },
-    body: JSON.stringify({ msgtype: "text", text: { content: (IS_TEST ? "【测试】" : "【民主测评】") + code } })
+    body: JSON.stringify({ msgtype: "text", text: { content: (IS_TEST ? "【测试】" : "【民主测评】") + buildCode() } })
   }).then(() => {
     localStorage.setItem("mzc_done_" + me, "1");
     showDone(false);
