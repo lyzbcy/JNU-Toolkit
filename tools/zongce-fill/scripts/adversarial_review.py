@@ -164,21 +164,24 @@ def _common_sub(a, b, minlen=4):
     a, b = _match_norm(a), _match_norm(b)
     if len(a) < minlen or len(b) < minlen:
         return a == b and a != ""
-    # 最长公共子串(短串足够小)
-    best = 0
+    # 最长公共子串(短串足够小); 纯数字命中(如学号/班级号"2304")不算佐证匹配
+    best, best_s = 0, ""
     for i in range(len(a)):
         for j in range(len(b)):
             k = 0
             while i + k < len(a) and j + k < len(b) and a[i + k] == b[j + k]:
                 k += 1
-            best = max(best, k)
-    return best >= minlen
+            if k > best:
+                best, best_s = k, a[i:i + k]
+    return best >= minlen and not best_s.isdigit()
 
 
 def vector_evidence(review, data, evidence_dir):
     pool = [ev.get("label", "") for ev in data.get("evidence") or []]
     if evidence_dir:
-        pool += [p.stem for p in Path(evidence_dir).iterdir() if p.is_file()]
+        exts = {".jpg", ".jpeg", ".png", ".pdf", ".webp", ".gif", ".bmp", ".txt", ".doc", ".docx"}
+        pool += [p.stem for p in Path(evidence_dir).iterdir()
+                 if p.is_file() and p.suffix.lower() in exts]
     pool = [p for p in pool if p]
     items = []
     for c in data.get("competitions") or []:

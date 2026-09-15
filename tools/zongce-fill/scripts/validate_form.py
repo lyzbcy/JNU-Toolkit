@@ -57,6 +57,19 @@ def main():
     wb = load_workbook(args.file)
     rep = Report()
 
+    # ---- 示例红字检查: 模板示例行(例/XXX)是红字, 真实数据若继承红色格式则提示
+    for wsx in wb.worksheets:
+        if wsx.title == "Sheet1":
+            continue
+        for row in wsx.iter_rows(min_row=2):
+            for cell in row:
+                if cell.value is None:
+                    continue
+                fc = cell.font.color if cell.font else None
+                if fc is not None and getattr(fc, "type", None) == "rgb" \
+                        and str(fc.rgb).upper().endswith("FF0000"):
+                    rep.warn("格式", f"{wsx.title}!{cell.coordinate} 数据为红色示例格式, 应为正常黑字")
+
     # 隐藏竞赛目录
     catalog = {}
     ws1 = wb["Sheet1"]

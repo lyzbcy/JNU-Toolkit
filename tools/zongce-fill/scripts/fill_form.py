@@ -18,7 +18,25 @@ from pathlib import Path
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
+from copy import copy as _style_copy
+
 from openpyxl import load_workbook
+
+
+def _put(w, r, c, v):
+    """写入单元格并重置字体颜色为默认黑。
+
+    模板的示例行(例/XXX)是红字, 直接写值会继承红色示例格式;
+    真实数据必须以正常黑字呈现, 故写值时统一剥离显式字体颜色。
+    """
+    cell = w.cell(row=r, column=c)
+    cell.value = v
+    f = cell.font
+    if f is not None and f.color is not None:
+        nf = _style_copy(f)
+        nf.color = None
+        cell.font = nf
+    return cell
 
 # ---------------------------------------------------------------- 分值规则
 
@@ -395,16 +413,17 @@ def write_workbook(wb, calc, data, out_path):
 
     # 基础分
     ws = wb["基础分"]
-    for c in "ABCDEF":
-        ws[f"{c}4"] = None
-    ws["A4"], ws["B4"] = str(sid), name
+    for c in range(1, 7):
+        _put(ws, 4, c, None)
+    _put(ws, 4, 1, str(sid))
+    _put(ws, 4, 2, name)
     hours, kt, comps = calc.basic_rows
-    ws["C4"] = hours
-    ws["D4"] = kt
+    _put(ws, 4, 3, hours)
+    _put(ws, 4, 4, kt)
     for j, cp in enumerate(comps or []):
         exact, _ = calc.match_competition(cp.get("name", ""))
-        ws.cell(row=4 + j, column=5, value=exact or cp.get("name", ""))
-        ws.cell(row=4 + j, column=6, value=cp.get("time", ""))
+        _put(ws, 4 + j, 5, exact or cp.get("name", ""))
+        _put(ws, 4 + j, 6, cp.get("time", ""))
 
     # 各加分 sheet: 先清示例行
     for sheet, (start, demo_end, ncols) in SHEET_START.items():
@@ -413,13 +432,13 @@ def write_workbook(wb, calc, data, out_path):
         w = wb[sheet]
         for r in range(start, demo_end + 1):
             for c in range(1, ncols + 1):
-                w.cell(row=r, column=c).value = None
+                _put(w, r, c, None)
 
     # 社会实践 sheet 双区结构单独清示例(行3-5)
     wsp = wb["加分项-社会实践"]
     for r in range(3, 6):
         for c in range(1, 6):
-            wsp.cell(row=r, column=c).value = None
+            _put(wsp, r, c, None)
 
     for sheet, zone, vals in calc.rows:
         if sheet == "加分项-竞赛":
@@ -432,13 +451,13 @@ def write_workbook(wb, calc, data, out_path):
                 vals_list = [vals.get("name"), None, None, None, None, None,
                              vals.get("desc", ""), None, None]
             for c, v in enumerate(vals_list, 1):
-                w.cell(row=r, column=c, value=v)
+                _put(w, r, c, v)
         elif sheet == "加分项-论文著作专利":
             r = 3 + _count(wb, "加分项-论文著作专利", 3)
             w = wb["加分项-论文著作专利"]
             for c, v in enumerate([vals["type"], vals["title"], vals["venue"], vals["level"],
                                    vals["rank"], vals["advisor"], vals["score"]], 1):
-                w.cell(row=r, column=c, value=v)
+                _put(w, r, c, v)
         elif sheet == "加分项-社会实践":
             w = wb["加分项-社会实践"]
             if zone == "practice":
@@ -449,35 +468,35 @@ def write_workbook(wb, calc, data, out_path):
                 status = "已结题通过" if vals["passed"] else "未结题"
                 row_vals = [vals["level"], None, vals["role"], f"{vals['title']}({status})", vals["score"]]
             for c, v in enumerate(row_vals, 1):
-                w.cell(row=r, column=c, value=v)
+                _put(w, r, c, v)
         elif sheet == "加分项-学生事务":
             r = 3 + _count(wb, "加分项-学生事务", 3)
             w = wb["加分项-学生事务"]
             for c, v in enumerate([vals["position"], vals["period"], vals["desc"], vals["score"]], 1):
-                w.cell(row=r, column=c, value=v)
+                _put(w, r, c, v)
         elif sheet == "加分项-文体志愿类":
             r = 4 + _count(wb, "加分项-文体志愿类", 4)
             w = wb["加分项-文体志愿类"]
             for c, v in enumerate([vals["type"], vals["name"], vals["award_level"],
                                    vals["award_grade"], vals["volunteer_hours"],
                                    vals["time"], vals["score"]], 1):
-                w.cell(row=r, column=c, value=v)
+                _put(w, r, c, v)
         elif sheet == "加分项-其他":
             w = wb["加分项-其他"]
             if "val" in vals:  # 证书行
                 r = 4 + _count(wb, "加分项-其他", 4, key=lambda row: row[0].value in CERT_NAMES)
                 for c, v in enumerate([vals["name"], vals["val"], vals["date"], None, None, None, None, None, vals["score"]], 1):
-                    w.cell(row=r, column=c, value=v)
+                    _put(w, r, c, v)
             elif "advanced" in vals:
                 r = 4 + _count(wb, "加分项-其他", 4, key=lambda row: row[3].value in ("是", "否"))
                 for c, v in enumerate([None, None, None, "是" if vals["advanced"] else "否",
                                        "是" if vals["exempt"] else "否", "是" if vals["leader"] else "否",
                                        None, None, vals["score"]], 1):
-                    w.cell(row=r, column=c, value=v)
+                    _put(w, r, c, v)
             else:
                 r = 4 + _count(wb, "加分项-其他", 4, key=lambda row: row[6].value)
                 for c, v in enumerate([None, None, None, None, None, None, vals["school"], vals["period"], vals["score"]], 1):
-                    w.cell(row=r, column=c, value=v)
+                    _put(w, r, c, v)
 
     wb.save(out_path)
 
