@@ -200,9 +200,15 @@ def vector_evidence(review, data, evidence_dir):
         review.hit("C 佐证攻击", "INFO", "无计分项, 无需佐证")
         return
     missing = []
+    waivers = data.get("evidence_waivers") or {}
     for kind, name in items:
-        if not any(_common_sub(name, p) for p in pool):
-            missing.append(f"{kind}-{name}")
+        if any(_common_sub(name, p) for p in pool):
+            continue
+        key = f"{kind}-{name}"
+        if key in waivers:
+            review.hit("C 佐证攻击", "WARN", f"[{key}] 缺个人佐证, 已按核定豁免: {waivers[key]}")
+            continue
+        missing.append(key)
     if missing:
         for m in missing:
             review.hit("C 佐证攻击", "ERROR", f"[{m}] 找不到对应佐证(证据池{len(pool)}件)——补佐证或删行")
