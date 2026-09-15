@@ -461,7 +461,7 @@ def write_workbook(wb, calc, data, out_path):
         elif sheet == "加分项-社会实践":
             w = wb["加分项-社会实践"]
             if zone == "practice":
-                r = 3 + _count(wb, "加分项-社会实践", 3, stop=31)
+                r = 3 + _count(wb, "加分项-社会实践", 3, stop=30)  # 行31是大创分区横幅, 不占用
                 row_vals = [vals["name"], vals["team_class"], vals["role"], vals["desc"], vals["score"]]
             else:  # 大创区从32行起, B列留空
                 r = 32 + _count(wb, "加分项-社会实践", 32)

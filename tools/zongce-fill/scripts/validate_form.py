@@ -141,9 +141,10 @@ def main():
             rep.error("论文", f"行{r} 应得分数为空或非数字")
         rep.warn("论文", f"行{r} 论文/收录认定需班长核定")
 
-    # ---- 社会实践(双区)
+    # ---- 社会实践(双区); 行31若是大创分区横幅则实践区止于30
     ws = wb["加分项-社会实践"]
-    for r, v in nonempty_rows(ws, 3, 31, 5):
+    practice_end = 30 if "大创" in str(ws.cell(row=31, column=1).value or "") else 31
+    for r, v in nonempty_rows(ws, 3, practice_end, 5):
         name, tclass, role, desc, score = v
         if tclass and tclass not in ("省级以上重点团队", "校级重点团队", "院级重点团队", "院级一般团队"):
             rep.error("社会实践", f"行{r} 项目类别[{tclass}]非法")
