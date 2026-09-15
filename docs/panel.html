@@ -89,6 +89,7 @@
 const ROSTER = ["郑晗湘","甘思源","马承芳","俞思瑶","郭馨怡","李慧茹","张佳怡","徐昕喆","林俊凌","雷震","邢宇","梁文博","蒋宇恒","杭东泽","曾子翔","刘知润","王铖","余恩泽","邹炜琪","孟浩明","许麟杰","孙以恒","李俊洋","王嵩羽","张步云","李子康","王承厚","韩烨磊","卢子良","魏征征","赵星","赵燕玲"];
 const MAX = [15, 20, 20];
 const WEBHOOK = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=72bbb44c-0db0-4e45-a213-876e35630727";
+const IS_TEST = new URLSearchParams(location.search).has("test");
 const grades = {};
 let me = "";
 
@@ -143,8 +144,10 @@ function clearAll() {
   progress();
 }
 function progress() {
-  let filled = 0, total = (ROSTER.length - 1) * 3;
-  ROSTER.forEach(n => { if (n !== me) grades[n].forEach(v => { if (v !== null) filled++; }); });
+  let filled = 0;
+  const inRoster = ROSTER.includes(me);
+  const total = ROSTER.length * 3 - (inRoster ? 3 : 0);
+  ROSTER.forEach(n => { if (!inRoster || n !== me) grades[n].forEach(v => { if (v !== null) filled++; }); });
   document.getElementById("prog").innerHTML = me ? `${filled}<br>/ ${total}` : "";
 }
 function buildCode() {
@@ -177,7 +180,7 @@ function submit() {
     method: "POST",
     mode: "no-cors",
     headers: { "Content-Type": "text/plain;charset=utf-8" },
-    body: JSON.stringify({ msgtype: "text", text: { content: "【评议打分】" + buildCode() } })
+    body: JSON.stringify({ msgtype: "text", text: { content: (IS_TEST ? "【测试评议】" : "【评议打分】") + buildCode().replace("MZC2|", "MZC2-TEST|") } })
   }).then(() => {
     localStorage.setItem("mzc2_done_" + me, "1");
     showDone("提交成功");
