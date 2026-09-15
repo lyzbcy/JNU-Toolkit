@@ -1,0 +1,104 @@
+{
+  "student": {"sid": "1193230419", "name": "余恩泽"},
+  "basic": {
+    "second_classroom_hours": 42,
+    "kechuang_type": "已参与一次以上学科竞赛",
+    "competitions_participated": [
+      {"name": "全国大学生数学建模竞赛", "time": "2026-05"}
+    ]
+  },
+  "competitions": [
+    {
+      "name": "全国大学生数学建模竞赛",
+      "award_level": "省级",
+      "award_grade": "一等奖",
+      "team_rank": 1,
+      "team_size": 3,
+      "advisor": "张三",
+      "desc": "参与算法方向项目，负责XXX模型设计与论文写作，对后续读研有较大帮助。",
+      "category": "数学建模"
+    },
+    {
+      "name": "中国大学生服务外包创新创业大赛",
+      "award_level": "国家级",
+      "award_grade": "三等奖",
+      "team_rank": 2,
+      "advisor": "李四",
+      "desc": "参与人工智能方向项目，负责后端开发与模型部署。",
+      "category": "项目应用与创新创业类"
+    }
+  ],
+  "papers": [
+    {
+      "type": "论文/著作",
+      "title": "基于深度学习的XXX研究",
+      "venue": "XXX学报",
+      "level": "国内普通期刊",
+      "rank": 1,
+      "advisor": "王五"
+    }
+  ],
+  "social_practices": [
+    {
+      "name": "XX社区暑期志愿服务实践",
+      "team_class": "院级重点团队",
+      "role": "队长",
+      "desc": "组织并参与社区服务实践，负责活动策划、志愿者分工与居民沟通，累计服务80小时，获社区居民好评。"
+    }
+  ],
+  "dachuang": [
+    {
+      "level": "省级大创创新项目",
+      "role": "队长",
+      "title": "面向XXX的智能系统",
+      "passed": true
+    }
+  ],
+  "student_affairs": [
+    {
+      "position": "人工智能2304班学习委员",
+      "period": "2025年9月-2026年9月",
+      "desc": "负责班级学风建设、收发作业与教学信息传达，组织期末复习串讲两次。",
+      "score": 3
+    }
+  ],
+  "activities": [
+    {
+      "type": "文艺类",
+      "name": "校园合唱大赛",
+      "award_level": "校级",
+      "award_grade": "二等奖",
+      "volunteer_hours": null,
+      "time": "2026-05-01",
+      "represent_school": false
+    },
+    {
+      "type": "志愿类",
+      "name": "义务献血",
+      "award_level": null,
+      "award_grade": null,
+      "volunteer_hours": null,
+      "time": "2026-03",
+      "represent_school": false
+    },
+    {
+      "type": "其他荣誉",
+      "name": "校优秀学生干部",
+      "award_level": "校级",
+      "award_grade": null,
+      "volunteer_hours": null,
+      "time": "2026-06",
+      "honor_level": "校级",
+      "represent_school": false
+    }
+  ],
+  "certificates": [
+    {"name": "CET-6", "score_or_grade": "580", "date": "2025-12"}
+  ],
+  "dorm": {"advanced": false, "exempt": false, "leader": false},
+  "overseas": [],
+  "evidence": [
+    {"label": "竞赛-数学建模省一", "files": ["证书1.jpg"]},
+    {"label": "证书-CET6", "files": ["CET6.png"]}
+  ]
+}

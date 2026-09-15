@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>综测个人加分项填报指南 · 2025-2026学年</title>
+<style>
+  :root { --primary:#1a5c9e; --accent:#e8f1fa; --warn:#b45309; --danger:#b91c1c; --line:#e2e8f0; }
+  * { box-sizing:border-box; }
+  body { font-family:"Microsoft YaHei","PingFang SC",sans-serif; color:#1e293b; margin:0; background:#f4f7fb; line-height:1.7; }
+  .wrap { max-width:900px; margin:0 auto; padding:24px 20px 60px; }
+  header { background:linear-gradient(135deg,#1a5c9e,#2d7dc6); color:#fff; border-radius:12px; padding:28px 30px; margin-bottom:20px; }
+  header h1 { margin:0 0 8px; font-size:24px; }
+  header p { margin:4px 0; opacity:.95; }
+  .deadline { display:inline-block; background:#fff; color:var(--danger); font-weight:700; padding:2px 12px; border-radius:6px; margin-top:8px; }
+  section { background:#fff; border:1px solid var(--line); border-radius:12px; padding:22px 26px; margin-bottom:18px; }
+  h2 { font-size:19px; color:var(--primary); border-left:4px solid var(--primary); padding-left:10px; margin:6px 0 14px; }
+  h3 { font-size:16px; margin:18px 0 8px; }
+  table { border-collapse:collapse; width:100%; font-size:13.5px; margin:10px 0; }
+  th,td { border:1px solid var(--line); padding:6px 9px; text-align:center; }
+  th { background:var(--accent); color:#0f3f6e; }
+  code, .file { background:#eef2f7; border-radius:4px; padding:1px 6px; font-family:Consolas,monospace; font-size:13px; }
+  .tip { background:#f0f9ff; border-left:4px solid #0ea5e9; padding:10px 14px; border-radius:0 8px 8px 0; margin:10px 0; font-size:14px; }
+  .warn { background:#fffbeb; border-left:4px solid #f59e0b; padding:10px 14px; border-radius:0 8px 8px 0; margin:10px 0; font-size:14px; }
+  .danger { background:#fef2f2; border-left:4px solid var(--danger); padding:10px 14px; border-radius:0 8px 8px 0; margin:10px 0; font-size:14px; }
+  ol.steps { padding-left:22px; }
+  ol.steps li { margin:8px 0; }
+  .path { font-family:Consolas,monospace; font-size:12.5px; background:#f8fafc; border:1px dashed #cbd5e1; padding:8px 10px; border-radius:6px; margin:8px 0; word-break:break-all; }
+  footer { text-align:center; color:#64748b; font-size:12.5px; margin-top:26px; }
+  @media print { body{background:#fff} section{border:none; padding:10px 0} .wrap{padding:0} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>2025-2026 学年综测 · 个人加分项填报指南</h1>
+  <p>人工智能2304班 | 依据《人工智能与计算机学院本科生综合素质测评实施细则（2025年7月修订）》</p>
+  <p>每位同学都要交：<b>①填好的《本科生综测个人加分项信息统计表.xlsx》 + ②加分佐证材料</b></p>
+  <span class="deadline">截止：9/16（周三）12:00 前（以群公告为准）</span>
+</header>
+
+<section>
+  <h2>一、先花 60 秒搞懂综测</h2>
+  <p>综测总成绩 = <b>基本素质(20%) + 专业素质(60%) + 创新与实践(20%)</b>。其中专业素质由教务成绩自动生成，<b>不用你填</b>；你要填的只是"创新与实践"里的 <b>加分项</b> 和基础分数据：</p>
+  <table>
+    <tr><th>模块</th><th>构成</th><th>谁来填</th></tr>
+    <tr><td>基础分(70)</td><td>第二课堂学时30 + 科创基础10 + 体育15 + 宿舍15</td><td>你只填<b>学时数</b>和<b>科创基础二选一</b>；体育宿舍班长从系统取数</td></tr>
+    <tr><td>加分项(30)</td><td>科研与创新 + 社会实践 + 其他</td><td><b>全部由你申报</b>（本指南主体）</td></tr>
+  </table>
+  <div class="tip">科创基础分二选一：①学年内听了 ≥2 次学术报告/讲座；②参加过 ≥1 次学科竞赛。满足其一如实勾选即可。</div>
+</section>
+
+<section>
+  <h2>二、怎么填：两种方式任选</h2>
+
+  <h3>方式 A（推荐）：用 AI 综测填报助手，5-10 分钟搞定</h3>
+  <ol class="steps">
+    <li>电脑装好 <b>ZCode</b>（或任意支持 .agents/skills 的 AI 命令行工具）和 Python（带 openpyxl）。</li>
+    <li>双击运行材料包里的 <code>安装zongce-skill.bat</code>，把填报助手装到本机。</li>
+    <li>把材料包里<span class="file">本科生综测个人加分项信息统计表（空白模板）.xlsx</span>复制到一个空文件夹，在该文件夹启动 ZCode。</li>
+    <li>对它说"帮我填综测表"，然后<b>把你的获奖/证书/志愿证明截图直接丢给它</b>，它会逐项问你、自动算分、生成表格，并告诉你哪些分数需要班长核定。</li>
+    <li>确认无误后它会自动：填表 → 校验 → 按 <span class="file">【学号】【姓名】</span> 命名打包好表格+佐证 → 引导你提交。<b>任何提交动作都会先征得你同意。</b></li>
+  </ol>
+  <div class="tip">没装 AI 工具也别慌，方式 B 一样能交，只是多花 20 分钟。</div>
+
+  <h3>方式 B：手动填 Excel</h3>
+  <p>打开空白模板，逐个 sheet 填（灰色示例行直接覆盖掉）：</p>
+  <table>
+    <tr><th>Sheet</th><th>填什么</th><th>易错点</th></tr>
+    <tr><td>基础分</td><td>学号、姓名、第二课堂学时（上限40）、科创基础二选一；选竞赛的把竞赛名+时间列在下面几行</td><td>学时填第二课堂系统里的总数，超过40按40</td></tr>
+    <tr><td>加分项-竞赛</td><td>竞赛全称（下拉选）、获奖级别/等级、队内顺位、指导老师、<b>竞赛描述（必填）</b>、分类、应得分数</td><td>竞赛名必须从下拉里选，不能手打；级别A/B自动带出</td></tr>
+    <tr><td>加分项-论文著作专利</td><td>类别、题目、刊物/会议、级别（下拉）、作者顺位、分数</td><td>论文必须填刊物名</td></tr>
+    <tr><td>加分项-社会实践</td><td><b>上半区（3行起）</b>：寒暑假社会实践；<b>下半区（32行起）</b>：大创项目</td><td>大创填在32行以下，B列留空</td></tr>
+    <tr><td>加分项-学生事务</td><td>职务、时间段、50字工作描述、分数(0-5，辅导员最终核定)</td><td>别漏了班委/学生组织职务</td></tr>
+    <tr><td>加分项-文体志愿类</td><td>文艺/体育/志愿/其他荣誉 + 级别等级或时长 + 分数</td><td>体育类填名次档（第1至第3名…）；志愿类填时长</td></tr>
+    <tr><td>加分项-其他</td><td>证书(CET/雅思/托福/CSP/软考)、宿舍称号、海外交流</td><td>一行只填一类</td></tr>
+  </table>
+  <p>分数对照本指南第四节的分值表填写，拿不准的先空着问班长。</p>
+</section>
+
+<section>
+  <h2>三、佐证材料（没有佐证 = 不加分）</h2>
+  <p>每一项加分都要有对应证明，缺一项那一项就不计分：</p>
+  <table>
+    <tr><th>加分项</th><th>可用佐证</th></tr>
+    <tr><td>竞赛获奖</td><td>获奖证书扫描/照片（含队伍名单页）</td></tr>
+    <tr><td>论文/专利</td><td>录用通知/见刊首页/专利受理或授权书</td></tr>
+    <tr><td>大创</td><td>立项书 + 结题证明</td></tr>
+    <tr><td>社会实践</td><td>团队立项文件、实践证明、服务时长证明</td></tr>
+    <tr><td>学生事务</td><td>聘书/任职证明（或班长统一出名单）</td></tr>
+    <tr><td>文体志愿</td><td>获奖证书、志愿时长截图（志愿汇/第二课堂）</td></tr>
+    <tr><td>证书/宿舍/海外</td><td>成绩单或证书截图、宿舍称号文件、交流证明</td></tr>
+    <tr><td>第二课堂学时</td><td>第二课堂系统学时截图</td></tr>
+  </table>
+  <p>文件命名为 <code>类别-项目名.扩展名</code>（如 <span class="file">竞赛-数学建模省一.jpg</span>、<span class="file">证书-CET6.jpg</span>），AI 助手会自动帮你改名归类。</p>
+</section>
+
+<section>
+  <h2>四、分值速查（常用部分）</h2>
+
+  <h3>学科竞赛（级别由竞赛目录自动认定）</h3>
+  <table>
+    <tr><th>级别</th><th>特等奖</th><th>一等奖</th><th>二等奖</th><th>三等奖</th></tr>
+    <tr><td><b>A类1级</b></td><td>15</td><td>13</td><td>11</td><td>9</td></tr>
+    <tr><td><b>A类2级</b></td><td>11</td><td>9</td><td>8</td><td>待核定</td></tr>
+    <tr><td><b>A类3级</b></td><td>8</td><td>6</td><td>5</td><td>待核定</td></tr>
+    <tr><td><b>B类1级</b></td><td>5</td><td>3</td><td>2</td><td>待核定</td></tr>
+    <tr><td><b>B类2级</b></td><td>2</td><td>1</td><td>0</td><td>0</td></tr>
+  </table>
+  <p style="font-size:13px;color:#475569">合作成果按 1/(2×队内顺位) 分摊。大创结题：国家创业9/创新6、省级创业6/创新5、校级2、院级1。论文：SCI 11、EI/SCI会议 9、CSCD/CCF 6、核心/国际会议 4、普刊/著作 2；授权发明专利 6。</p>
+
+  <h3>文体·志愿·荣誉</h3>
+  <table>
+    <tr><th>级别</th><th>一等奖/第1-3名</th><th>二等奖/第4-6名</th><th>三等奖/第7-8名</th></tr>
+    <tr><td>省部级以上</td><td>5</td><td>4</td><td>3</td></tr>
+    <tr><td>市级</td><td>4</td><td>3</td><td>2</td></tr>
+    <tr><td>校级</td><td>3</td><td>2</td><td>1</td></tr>
+    <tr><td>院级</td><td>2</td><td>1</td><td>0</td></tr>
+  </table>
+  <p style="font-size:13px;color:#475569">代表学校外出参加市级以上比赛 +2（封顶5）。义务献血 +1。荣誉：国家4/省3/市2/校1。社会实践团队：省级以上4(队长5)/校级3(4)/院重点2(3)/院一般1(2)；中学行等个人实践 +2。学生事务 0-5 由辅导员评定。</p>
+
+  <h3>证书·宿舍·海外</h3>
+  <table>
+    <tr><th>证书</th><th>2分</th><th>3分</th><th>4分</th></tr>
+    <tr><td>CET-4</td><td>425-499(得1分) / 500-559</td><td>≥560</td><td>—</td></tr>
+    <tr><td>CET-6</td><td>425-499</td><td>500-559</td><td>≥560</td></tr>
+    <tr><td>雅思/托福</td><td>5-5.5 / 40-64</td><td>6-6.5 / 65-89</td><td>≥7 / ≥90</td></tr>
+    <tr><td>CSP</td><td>200-299</td><td>300-399</td><td>≥400</td></tr>
+    <tr><td>软考</td><td>—</td><td>中级</td><td>高级</td></tr>
+  </table>
+  <p style="font-size:13px;color:#475569">先进/免检宿舍 0-2（宿舍长再+1）；海外交换 +2、游学每次+1（≤2）。三项合计上限：科研20/实践15/其他7（班级汇总表按15/8/7，以辅导员口径为准）。</p>
+</section>
+
+<section>
+  <h2>五、提交什么、交到哪</h2>
+  <p>最终交一个压缩包，结构如下（AI 助手自动生成；手动同学照着搭）：</p>
+  <div class="path">【学号】【姓名】综测材料.zip<br>
+  └─ 【学号】【姓名】/<br>
+      &nbsp;&nbsp;├─ 【学号】【姓名】本科生综测个人加分项信息统计表.xlsx<br>
+      &nbsp;&nbsp;└─ 【学号】【姓名】佐证材料/<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ 竞赛-数学建模省一.jpg<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ 证书-CET6.png<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ ……
+  </div>
+  <p>提交渠道：<b>QQ 收集表 / 江大智能填报（eform，需校园网）/ 群文件</b>，链接见群公告。提交后自己留一份备份。</p>
+</section>
+
+<section>
+  <h2>六、常见问题</h2>
+  <p><b>Q：去年的奖能算吗？</b> 不能。加分项目必须是 2025-2026 学年内发生的（细则第十五条）。</p>
+  <p><b>Q：同一个比赛拿了省奖又进国赛？</b> 同一项目按最高值只计一次。</p>
+  <p><b>Q：大创立项了但没结题？</b> 不加分，且全体成员 −3、队长 −5（班长汇总时处理，你不用填负分）。</p>
+  <p><b>Q：我的比赛不在下拉列表里？</b> 把竞赛全称发给班长认定，别自己瞎选一个近似的。</p>
+  <p><b>Q：综测影响什么？</b> 综合奖学金和单项奖学金评定都以综测为基础（10月评定），别不当回事。</p>
+  <div class="danger"><b>诚信提醒：</b>弄虚作假、虚报材料的，取消当学年所有评奖评优资格并按情节处分。所有加分以佐证材料为准，公示 3 天接受全班监督。</div>
+</section>
+
+<footer>人工智能2304班 综测工作小组 · 2026年9月 · 有问题群里@班长</footer>
+</div>
+</body>
+</html>
