@@ -66,7 +66,7 @@
 </div>
 
 <div class="quick" id="tools" style="display:none">
-  <button onclick="fillRest(12, 16, 16)">一键默认<small>未填的填 12 / 16 / 16</small></button>
+  <button onclick="fillRest(15, 20, 20)">一键满分<small>未填的填满分 15 / 20 / 20</small></button>
   <button class="warn" onclick="clearAll()">清空</button>
 </div>
 
@@ -172,7 +172,7 @@ function submit() {
   if (!me) return showMsg("请先输入你的名字", false);
   const miss = ROSTER.filter(n => n !== me && grades[n].some(v => v === null));
   if (miss.length) {
-    return showMsg(`还有 ${miss.length} 位同学没打完（${miss.slice(0, 5).join("、")}${miss.length > 5 ? " 等" : ""}）。点「一键默认」补齐即可。`, false);
+    return showMsg(`还有 ${miss.length} 位同学没打完（${miss.slice(0, 5).join("、")}${miss.length > 5 ? " 等" : ""}）。点「一键满分」补齐（默认都好，有异常的再往下调）。`, false);
   }
   const btn = document.getElementById("submitBtn");
   btn.disabled = true; btn.textContent = "提交中…";
