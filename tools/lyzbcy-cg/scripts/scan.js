@@ -38,11 +38,23 @@
       throw new Error("作业标题或开闭时间与列表不匹配");
     }
     const questions = [...content.querySelectorAll("table tbody tr")]
-      .map(row => [...row.cells].map(cell => normalize(cell.textContent)))
-      .filter(cells => cells.length >= 4)
-      .map(([, name, points, status]) => ({
-        name, points, status: status.split(/文件重命名为|查看排行榜|下载/)[0].trim(),
-      }));
+      .filter(row => row.cells.length >= 4)
+      .map((row) => {
+        const [, name, points, statusCell] = row.cells;
+        const status = statusCell.cloneNode(true);
+        status.querySelectorAll("a").forEach(link => link.remove());
+        status.querySelectorAll("p, div, br, pre, li").forEach(
+          node => node.after(status.ownerDocument.createTextNode(" ")),
+        );
+        const full = normalize(status.textContent);
+        const summary = full.split(/文件重命名为|RANK:|STDOUT:|STDERR:/i)[0].trim();
+        const exitCode = full.match(/RETURN CODE:\s*(-?\d+)/i)?.[1];
+        return {
+          name: normalize(name.textContent),
+          points: normalize(points.textContent),
+          status: exitCode === undefined ? summary : summary + " RETURN CODE: " + exitCode,
+        };
+      });
     if (!questions.length) throw new Error("作业的题目状态表为空");
     return { ...link, opens: dates[0], deadline: dates[1], questions };
   };

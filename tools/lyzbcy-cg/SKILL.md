@@ -2,7 +2,7 @@
 name: lyzbcy-cg
 description: 通过 Edge 已登录会话检查江南大学 CG 在线作业、截止时间和个人提交状态。
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 # CG 在线作业
