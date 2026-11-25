@@ -9,8 +9,11 @@
 | [zongce-fill](tools/zongce-fill/) | 人工智能与计算机学院综测《个人加分项信息统计表》自动填报：访谈 → 自动算分 → 生成表格 → 校验 → 对抗性评审 → 经本人同意后打包提交 | ✅ v1.1.0 可用 |
 | [lyzbcy-cg](tools/lyzbcy-cg/) | 复用已登录的 Edge，检查 CG 当前作业、有效期和个人提交状态 | v1.0.1 |
 | [jnu-graduation-check](tools/jnu-graduation-check/) | 检查本人毕设选题、导师、课题详情、阶段进度和截止时间 | v1.0.0（只读核验） |
+| [jnu-graduation-prep](tools/jnu-graduation-prep/) | 依据当年通知、样例和真实课题提前准备并审查开题、外文、论文和研究记录 | v1.0.0（材料准备与审查） |
 
 毕设核验：把 `tools/jnu-graduation-check` 复制到 AI 技能目录，连接本人 Edge 浏览器，在官方入口完成统一认证，再对 AI 说 **“帮我核对毕业设计选题和下一步截止时间”**。该技能不会替你盲选课题、提交材料或绕过身份认证。
+
+毕设准备：把 `tools/jnu-graduation-prep` 复制到 AI 技能目录，把自己当年的通知、导师样例、正式课题和已有工程证据放在本地工作区，再对 AI 说 **“按老师样例提前准备可完成的毕业设计材料，并核对格式与证据”**。工具不会替学生签名、虚构论文数据或把准备稿标成已提交。
 
 ## 🚀 快速开始（以 zongce-fill 为例）
 
