@@ -8,6 +8,9 @@
 |---|---|---|
 | [zongce-fill](tools/zongce-fill/) | 人工智能与计算机学院综测《个人加分项信息统计表》自动填报：访谈 → 自动算分 → 生成表格 → 校验 → 对抗性评审 → 经本人同意后打包提交 | ✅ v1.1.0 可用 |
 | [lyzbcy-cg](tools/lyzbcy-cg/) | 复用已登录的 Edge，检查 CG 当前作业、有效期和个人提交状态 | v1.0.1 |
+| [jnu-graduation-check](tools/jnu-graduation-check/) | 检查本人毕设选题、导师、课题详情、阶段进度和截止时间 | v1.0.0（只读核验） |
+
+毕设核验：把 `tools/jnu-graduation-check` 复制到 AI 技能目录，连接本人 Edge 浏览器，在官方入口完成统一认证，再对 AI 说 **“帮我核对毕业设计选题和下一步截止时间”**。该技能不会替你盲选课题、提交材料或绕过身份认证。
 
 ## 🚀 快速开始（以 zongce-fill 为例）
 
@@ -71,3 +74,7 @@ MIT © [lyzbcy](https://lyzbcy.github.io/)
 个人主页：[lyzbcy.github.io](https://lyzbcy.github.io/)
 
 如果这个工具帮到了你，欢迎点一个 ⭐ star，或在 [Discussions](https://github.com/lyzbcy/JNU-Toolkit/discussions) 留下你的真实评价——这对我很有帮助。
+
+欢迎加入捞鱼 QQ 粉丝群，交流工具使用体验和建议：
+
+[![加入 QQ 群](https://lyzbcy.github.io/weshoto-study/img/qq-group.jpg)](https://lyzbcy.github.io/weshoto-study/img/qq-group.jpg)
