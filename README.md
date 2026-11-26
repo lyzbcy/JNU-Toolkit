@@ -7,7 +7,7 @@
 | 工具 | 用途 | 状态 |
 |---|---|---|
 | [zongce-fill](tools/zongce-fill/) | 人工智能与计算机学院综测《个人加分项信息统计表》自动填报：访谈 → 自动算分 → 生成表格 → 校验 → 对抗性评审 → 经本人同意后打包提交 | ✅ v1.1.0 可用 |
-| [lyzbcy-cg](tools/lyzbcy-cg/) | 复用已登录的 Edge，检查 CG 当前作业、有效期和个人提交状态 | v1.0.1 |
+| [lyzbcy-cg](tools/lyzbcy-cg/) | 复用已登录的 Edge 检查 CG 作业及提交状态；经本人授权只读检索校园邮箱 | v1.0.2 |
 | [jnu-graduation-check](tools/jnu-graduation-check/) | 检查本人毕设选题、导师、课题详情、阶段进度和截止时间 | v1.0.0（只读核验） |
 | [jnu-graduation-prep](tools/jnu-graduation-prep/) | 依据当年通知、样例和真实课题提前准备并审查开题、外文、论文和研究记录 | v1.0.0（材料准备与审查） |
 
